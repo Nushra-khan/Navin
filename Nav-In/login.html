@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="loginnavin.css">
+</head>
+
+<body>
+    <div>
+        <img src="logo.png" alt="Logo" style="width: 100px; height: auto; float: left; margin-right: 10px;margin-top: 20px;">
+    </div>
+
+    <div class="main">
+        <h1>navin</h1>
+        <h3>Enter your Login credentials</h3>
+        <form action="javascript:void(0);" onsubmit="return validateForm()">
+            <label for="first">
+                Username:
+            </label>
+            <input type="text" 
+                   id="first" 
+                   name="first" 
+                   placeholder="Enter your Username" required>
+
+            <label for="password">
+                Password:
+            </label>
+            <input type="password"
+                   id="password" 
+                   name="password"
+                   placeholder="Enter your Password" required>
+
+            <div class="wrap">
+                <button type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+        <p>Account Created?
+            <a href="next.html" style="text-decoration: none;">
+                Let's Navigate
+            </a>
+        </p>
+    </div>
+
+    <script>
+        const validCredentials = [
+            { username: "alice.smith", password: "Alice2024!" },
+            { username: "bob.johnson", password: "Bob@2024" },
+            { username: "carol.brown", password: "Carol#2024" },
+            { username: "dave.williams", password: "Dave$2024" },
+            { username: "eve.jones", password: "Eve%2024" },
+            { username: "frank.miller", password: "Frank^2024" },
+            { username: "grace.davis", password: "Grace&2024" },
+            { username: "henry.garcia", password: "Henry*2024" },
+            { username: "isabella.rodriguez", password: "Isabella(2024" },
+            { username: "jack.wilson", password: "Jack)2024" },
+        ];
+
+        function validateForm() {
+            const usernameInput = document.getElementById("first").value;
+            const passwordInput = document.getElementById("password").value;
+
+            const isValidUser = validCredentials.some(user => 
+                user.username === usernameInput && user.password === passwordInput
+            );
+
+            if (!isValidUser) {
+                alert("Invalid username or password.");
+                return false; // Prevent form submission
+            }
+
+            console.log("Login successful! Redirecting to next.html...");
+            window.location.href = "next.html"; // Redirect on success
+            return true; // Allow form submission
+        }
+    </script>
+
+</body>
+
+</html>
